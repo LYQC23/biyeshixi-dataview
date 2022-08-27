@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
+</head>
+<body>
+<!--雷达图2-->
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="barchart" style="width: 800px;height:600px;"></div>
+<script type="text/javascript">
+        // 利用dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('barchart'));
+
+    // 指定图表的配置项和数据
+    initGrades();
+    function initGrades(){
+    var option = {
+    title: {
+        text: "学生体育能力雷达图"
+    },
+    tooltip:{},
+    legend:{
+        data: ["胡杰明","韩晓晓","孙悦","张锋","南云月"]
+    },
+    radar:{
+        indicator:[
+        { name: "耐力", max: 85 },
+        { name: "速度", max: 90 },
+        { name: "平衡性", max: 60 },
+        { name: "力量", max: 100 },
+        { name: "柔韧性", max: 80 },
+        ],
+        shape: 'circle'
+    },
+    series: [
+        {
+            name: '5位同学',
+            type: 'radar',
+            data: [
+                {
+                    value: [84, 77, 46, 77, 26],
+                    name: '胡杰明'
+                },
+                {
+                    value: [70, 87, 40, 60, 66],
+                    name: '韩晓晓'
+                },
+                {
+                    value: [75, 65, 55, 80, 53],
+                    name: '孙悦'
+                },
+                {
+                    value: [78, 80, 25, 95, 34],
+                    name: '张锋'
+                },
+                {
+                    value: [65, 60, 45, 85, 78],
+                    name: '南云月'
+                }
+            ]
+        }
+    ]
+
+    }
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+}
+    </script>
+
+<!--<script>-->
+
+<!--    const details = {-->
+<!--        weather: "多云",-->
+<!--        temperature: 19,//oc-->
+<!--        shidu: 71,   // %-->
+<!--        fengsu: 16.5,//km/h-->
+<!--        fengya: 1009  //mb-->
+<!--    }-->
+<!--    const aqis = {-->
+<!--        aqi:31,-->
+<!--        PM2.5:19,-->
+<!--        PM2.5:31,-->
+<!--        O3:88,-->
+<!--        NO2:18,-->
+<!--        SO2:10,-->
+<!--        CO:600-->
+<!--    }-->
+<!--    const DaysData = [-->
+<!--        [,]-->
+
+
+
+
+<!--    ]-->
+
+
+<!--</script>-->
+</body>
+</html>

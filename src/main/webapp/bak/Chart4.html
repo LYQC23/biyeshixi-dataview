@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+    <title>Sunburst Chart</title>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/js/citydata.js"></script>
+</head>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<body style="height: 100%; margin: 0">
+<div id="sunburst" style="height: 100%"></div>
+<script type="text/javascript">
+   var myChart = echarts.init(document.getElementById('sunburst'));
+    var app = {};
+    option = null;
+
+var data = [{
+    name: '山东省',
+    itemStyle: {
+           color: '#ddaf61'
+        },
+    children: [{
+        name: '中度污染',
+        children: highlevel(citysData)
+        },
+        {
+        name: '轻度污染',
+        children: midlevel(citysData)
+        },
+         {
+        name: '空气清洁',
+        children: lowlevel(citysData)
+        }
+        ]
+}];
+
+option = {
+ backgroundColor: 'grey',
+ title: {
+        text: '2021年 不同省份各专业的录取人数',
+                textStyle: {
+            fontSize: 35,
+            align: 'right'
+            },
+         },
+
+    visualMap: {
+        type: 'continuous',
+        min: 0,
+        max: 30,
+        inRange: {
+            color: ['#2D5F73','#538EA6','#F2D1B3','#F2B8A2',
+                    '#F28C8C','#ec0000','#8A0000','#00da3c',
+                    '#008F28','#f7f1bd','#ef5a78','#f99e1c',
+                    //'#c94a44','#b53b54','#a5446f','#dd4c51',
+                    //'#e0719c','#975e6d','#da0d68','#da1d23',
+                    '#dd4c51','#3e0317','#e62969','#ef2d36']
+        }
+    },
+    series: {
+        type: 'sunburst',
+        data: data,
+        radius: [0, '100%'],
+        levels: [{}, {
+            r0: '15%',
+            r: '25%',
+            itemStyle: {
+                borderWidth: 2
+            },
+            label: {
+                rotate: 'tangential'
+            }
+        }, {
+            r0: '25%',
+            r: '45%',
+            label: {
+                align: 'center'
+            }
+        }, {
+            r0: '45%',
+            r: '80%',
+            label: {
+                align: 'center'
+            }
+        }, {
+            r0: '80%',
+            r: '82%',
+            label: {
+                position: 'outside',
+
+            },
+            itemStyle: {
+                borderWidth: 3
+            }
+        }]
+    }
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+</body>
+</html>

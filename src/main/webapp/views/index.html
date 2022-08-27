@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>index</title>
+    <script type="text/javascript" src="./js/barchart.js"></script>
+    <script type="text/javascript" src="./js/citydata.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="text/javascript" src="./js/echarts.min.js"></script>
+    <script type="text/javascript" src="./js/shandong.js"></script>
+    <script type="text/javascript" src="./js/map.js"></script>
+    <script type="text/javascript" src="./js/js.js"></script>
+    <script type="text/javascript" src="./js/sunburst.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="head clearfix">
+      <h1 class="pulll_left">山东省空气质量数据平台</h1>
+      <div class="menu menu2 pulll_left">
+        <ul>
+          <!-- <li><a href="#">导航标题</a></li>
+          <li><a href="#">导航标题样式</a></li>
+          <li><a href="#">导航标题</a></li>
+          <li><a href="#">导航标题</a></li>
+          <li><a href="#">导航标题</a></li>
+          <li><a href="#">导航标题</a></li> -->
+        </ul>
+      </div>
+      <div class="time" id="showTime">2018/6/12 17:00:12</div>
+    </div>
+    <div class="mainbox">
+      <ul class="clearfix nav1">
+        <li style="width: 22%">
+          <div class="box">
+            <div class="tit">所在地-威海 空气质量</div>
+            <div class="boxnav" style="height: 330px">
+              <div class="yqlist">
+                <ul class="clearfix">
+                  <li>
+                    <div class="yq" id="yq">11</div>
+                    <span>AQI</span>
+                  </li>
+                  <li>
+                    <div class="yq">29.1</div>
+                    <span>风速(km/h)</span>
+                  </li>
+                  <li>
+                    <div class="yq">51%</div>
+                    <span>湿度</span>
+                  </li>
+                  <li>
+                    <div class="yq">1014</div>
+                    <span>气压（mb）</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="tit">省内空气污染排行榜</div>
+            <div class="boxnav">
+              <div class="" style="height: 406px" id="echart2"></div>
+            </div>
+          </div>
+        </li>
+        <li style="width: 56%">
+          <div class="box">
+            <div class="boxnav mapc" style="height: 550px; position: relative">
+              <div class="map" id="map"></div>
+            </div>
+          </div>
+          <div class="box">
+            <div class="tit">威海市8月空气质量数据概览</div>
+            <div class="boxnav" style="height: 250px" id="echart3"></div>
+          </div>
+        </li>
+        <li style="width: 22%">
+          <div class="box">
+            <div class="tit">威海市空气污染各项污染物</div>
+            <div class="boxnav" id="echart4" style="height: 300px"></div>
+          </div>
+          <div class="box">
+            <div class="tit">山东省空气污染程度分布</div>
+            <div class="boxnav" style="height: 250px" id="echart5"></div>
+          </div>
+          <div class="box">
+            <div class="tit">空气质量数据来源</div>
+            <div class="boxnav" style="height: 150px" id="echart6">
+              <ul>
+                <li>
+                  <div class="box-from" style="margin-top: 10px">
+                    <div style="float: left">
+                      <img
+                        src="/images/1.png"
+                        alt=""
+                        height="41.6px"
+                        width="54.04px"
+                      />
+                    </div>
+                    <div>
+                      <a
+                        href="https://www.iqair.cn/cn/profile/china-national-environmental-monitoring-centre"
+                        >1.China National Environmental Monitoring Centre</a
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div style="margin-top: 20px">
+                    <div style="float: left">
+                      <img
+                        src="/images/2.png"
+                        alt=""
+                        height="41.6px"
+                        width="54.04px"
+                      />
+                    </div>
+                    <div>
+                      <a
+                        href="https://www.iqair.cn/cn/profile/environmental-protection-department-of-shandong"
+                        >2.Environmental Protection Department of Shandong
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <script>
+        var t = null;
+        t = setTimeout(time, 1000); //開始运行
+        function time() {
+          clearTimeout(t); //清除定时器
+          dt = new Date();
+          var y = dt.getFullYear();
+          var mt = dt.getMonth() + 1;
+          var day = dt.getDate();
+          var h = dt.getHours(); //获取时
+          var m = dt.getMinutes(); //获取分
+          var s = dt.getSeconds(); //获取秒
+          document.getElementById("showTime").innerHTML =
+            y + "/" + mt + "/" + day + " " + h + ":" + m + ":" + s + "";
+          t = setTimeout(time, 1000); //设定定时器，循环运行
+        }
+      </script>
+    </div>
+  </body>
+</html>

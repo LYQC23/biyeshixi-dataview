@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8" />
+    <title>Sunburst Chart</title>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/js/1.js"></script>
+</head>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<body style="height: 100%; margin: 0">
+<div id="sunburst" style="height: 100%"></div>
+<script type="text/javascript">
+      var chartDom = document.getElementById("sunburst");
+      var myChart = echarts.init(chartDom);
+      option && myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8" />
+    <title>Map Chart</title>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
+    <script type="text/javascript" src="/js/shandong.js"></script>
+    <script type="text/javascript" src="/js/citydata.js"></script>
+</head>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<body style="height: 100%; margin: 0">
+<div id="Map" style="height: 100%"></div>
+<script type="text/javascript">
+      var option4 = null;
+      shandongMap();
+      function shandongMap() {
+        let myChart = echarts.init(document.getElementById("Map"));
+        option4 = {
+          geo: {
+            map: "山东", //这里的名称需要和shandong.js: echarts.registerMap('shandong',{})中的名称一致
+            label: { show: false }, //显示地点
+            roam:false , //缩放
+          },
+          series: [
+            {
+              name: "pm2.5",
+              type: "scatter",
+              coordinateSystem: "geo",
+              data: scatterData(citysData),
+              symbol: 'circle',
+              symbolSize: function (val) {
+                return  8;
+              },
+              encode: {
+                value: 2,
+              },
+
+              label: {
+                formatter: "{b}",
+                position: "right",
+                show: true,
+                hideOverlap:false
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  formatter: "{b}:{@[3]}",
+                  position: "top",
+                  fontSize:10
+
+                },
+              },
+            }
+          ]
+        };
+        myChart.setOption(option4);
+        window.addEventListener("resize", function () {
+          myChart.resize();
+        });
+      }
+    </script>
+</body>
+</html>

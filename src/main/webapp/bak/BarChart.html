@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script type="text/javascript" src="/js/echarts.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="barchart" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+        // 利用dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('barchart'));
+
+// 指定图表的配置项和数据
+initGrades();
+function initGrades(){
+    var option = {
+<!--        title:{-->
+<!--            text: '详情',-->
+<!--        },-->
+        grid: {
+            left: '50',
+            top: '30',
+            right: '0',
+           // bottom: '10',
+            //containLabel: true
+        },
+        legend: {
+        },
+
+        tooltip: {
+
+            trigger: 'axis',
+
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+
+            }
+
+        },
+
+
+        xAxis: {
+
+            type: 'category',
+
+            data: ["新疆和田","四川乐山","四川眉山","广东中山","湖北武汉","广东江门"],
+
+            axisTick: { //---坐标轴 刻度
+
+                show: true, //---是否显示
+
+            },
+
+            axisLine: { //---坐标轴 轴线
+
+                show: true, //---是否显示
+
+                lineStyle: {
+
+                    //color: 'rgba(255,255,255,.1)',
+
+                    width: 1,
+
+                    type: 'dotted',
+
+                },
+
+            },
+
+            axisLabel: {//X轴文字
+
+                textStyle: {
+
+                    fontSize: 12,
+
+                    //color: '#fff'
+
+                },
+
+            },
+
+        },
+
+        yAxis: {
+
+            type: 'value',
+
+            splitLine: {//分割线
+
+                show: true,
+
+                lineStyle: {
+                    //color: 'rgba(255,255,255,.1)',
+
+                    width: 1,
+                    type: 'dotted'
+
+                }
+
+            },
+
+            axisLabel: {//Y轴刻度值
+
+                formatter: '{value}',
+
+                textStyle: {
+
+                    fontSize: 12,
+
+                    //color: '#fff'
+
+                },
+
+            },
+
+            axisLine: { //---坐标轴 轴线
+
+                show: false, //---是否显示
+
+            },
+
+        },
+
+        series: [{
+
+            name: 'AQI',
+
+            type: 'bar',
+
+            //stack: 'you',
+
+            data: [223, 132, 113, 103, 80, 79],
+
+            //barWidth: 15,
+
+            //barGap: 0.5, //柱子之间间距 //柱图宽度      两种情况都要设置，设置series 中对应数据柱形的itemStyle属性下的emphasis和normal的barBorderRadius属性初始化时候圆角  鼠标移上去圆角
+        }, {
+
+            name: 'PM2.5',
+
+            type: 'bar',
+
+            stack: 'you',
+
+            data: [91, 36, 16,34, 20, 35],
+           // barWidth: 15, //柱图宽度
+           // barGap: 0.5,
+        },
+        {
+
+            name: 'PM10',
+
+            type: 'bar',
+
+            stack: 'you',
+
+            data: [15, 31, 14,38, 60, 12],
+           // barWidth: 15, //柱图宽度
+           // barGap: 0.5,
+        },
+         {
+
+            name: 'O3',
+
+            type: 'bar',
+            stack: 'you2',
+            data: [15, 61, 44,28, 30, 22],
+           // barWidth: 15, //柱图宽度
+           // barGap: 0.5,
+        },
+        {
+
+            name: 'CO',
+
+            type: 'bar',
+            stack: 'you2',
+
+            data: [53, 21, 24,28, 10, 32],
+           // barWidth: 15, //柱图宽度
+           // barGap: 0.5,
+        }
+        ,
+        {
+
+            name: 'CO2',
+
+            type: 'bar',
+            stack: 'you2',
+            //stack: 'you',
+
+            data: [14, 15, 11,18, 10, 12],
+           // barWidth: 15, //柱图宽度
+           // barGap: 0.5,
+        }
+        ]
+
+    };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+}
+    </script>
+</body>
+</html>

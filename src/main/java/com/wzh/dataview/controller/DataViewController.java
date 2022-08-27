@@ -15,6 +15,10 @@ public class DataViewController {
         ModelAndView mav = new ModelAndView("/views/HelloWorld.html");
         return mav;
     }
-
+    @RequestMapping("/index")
+    public ModelAndView itemsList2() {
+        ModelAndView mav = new ModelAndView("/views/index.html");
+        return mav;
+    }
 
 }
